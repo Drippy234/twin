@@ -1,0 +1,9 @@
+gradio
+pillow
+torch
+torchvision
+numpy
+ddgs
+playsound
+requests
+opencv-python
