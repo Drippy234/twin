@@ -41,7 +41,7 @@ python app.py
 Screenshots (Add at least 3)
 ## Screenshots (Add at least 3)
 
-![Celebrity Lookalike](https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7)
+![)
 *Example showing celebrity lookalike result.*
 
 ![Cartoon Lookalike](https://your-link-to-cartoon-image.png)
@@ -58,26 +58,13 @@ Screenshots (Add at least 3)
 ## For Hardware (N/A for this project)
 
 ### Schematic & Circuit
-![Circuit](https://your-link-to-circuit-diagram.png)
-*Explain connections here.*
-
-![Schematic](https://your-link-to-schematic.png)
-*Explain the schematic here.*
-
+n/a
 ### Build Photos
-![Components](https://your-link-to-components-photo.png)
-*List out all components shown.*
-
-![Build](https://your-link-to-build-process-photo.png)
-*Explain the build steps.*
-
-![Final](https://your-link-to-final-product-photo.png)
-*Explain the final build.*
-
+n/a
 ## Project Demo
 
 ### Video
-[Watch the demo here](https://your-link-to-demo-video.com)
+[Watch the demo here]()
 *Shows Twin Finder in action with both celebrity and cartoon modes.*
 
 ### Additional Demos
