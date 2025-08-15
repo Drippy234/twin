@@ -30,12 +30,20 @@ with gr.Blocks(css="""
     }
 
     html, body {
-        background: #ffffff !important;
-        font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%) !important;
+        background-size: 400% 400% !important;
+        animation: gradientShift 15s ease infinite !important;
+        font-family: 'Poppins', 'Inter', 'Segoe UI', sans-serif !important;
         margin: 0 !important;
         padding: 0 !important;
         min-height: 100vh !important;
         overflow-x: hidden !important;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     /* Gradio Container Transparency */
@@ -54,98 +62,150 @@ with gr.Blocks(css="""
     .logo-container {
         text-align: center;
         margin-bottom: 30px;
-        background: rgba(248, 250, 252, 0.8);
-        backdrop-filter: blur(25px);
-        padding: 30px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(30px);
+        padding: 40px;
         border-radius: 30px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 166, 81, 0.2);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        overflow: hidden;
+        animation: logoGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+        0% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(102, 126, 234, 0.5); }
+        100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 50px rgba(245, 87, 108, 0.7); }
     }
 
     .logo-title {
-        color: #0B6623;
-        font-weight: bold;
-        font-size: 48px;
-        margin: 15px 0 5px 0;
-        text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
-        background: linear-gradient(135deg, #0B6623, #00A651);
+        background: linear-gradient(135deg, #ff6b6b, #4facfe, #f093fb, #ff9ff3);
+        background-size: 400% 400%;
+        animation: titleGradient 3s ease infinite;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        font-weight: 900;
+        font-size: 52px;
+        margin: 20px 0 10px 0;
+        text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    @keyframes titleGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
     .logo-subtitle {
-        color: #666;
-        font-size: 16px;
-        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        font-weight: 600;
         margin: 0;
-        font-style: italic;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
     }
     /* Buttons */
     .gr-button {
-        background: linear-gradient(135deg, #00A651 0%, #009246 100%) !important;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%) !important;
         color: white !important;
-        border-radius: 25px;
-        padding: 16px 32px;
-        font-weight: bold;
+        border-radius: 50px;
+        padding: 18px 40px;
+        font-weight: 700;
         font-size: 18px;
-        box-shadow: 0 4px 12px rgba(0,166,81,0.3);
-        border: none !important;
-        transition: all 0.3s ease;
-        margin: 8px 0;
+        box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4),
+                    0 0 20px rgba(255, 107, 107, 0.3);
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        margin: 12px 0;
         width: 100%;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .gr-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s;
+    }
+
+    .gr-button:hover::before {
+        left: 100%;
     }
 
     .gr-button:hover {
-        background: linear-gradient(135deg, #009246 0%, #007a3d 100%) !important;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,166,81,0.4);
+        background: linear-gradient(135deg, #ff5252 0%, #d63031 50%, #fd79a8 100%) !important;
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6),
+                    0 0 40px rgba(255, 107, 107, 0.5);
     }
 
     /* Gallery */
     .gr-gallery {
-        border-radius: 20px;
-        border: 1px solid rgba(0, 166, 81, 0.2);
-        padding: 20px;
-        background: rgba(248, 250, 252, 0.6);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        border-radius: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(25px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                    0 0 25px rgba(116, 75, 162, 0.3);
         max-width: 600px;
         margin: 0 auto;
+        animation: galleryGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes galleryGlow {
+        0% { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 25px rgba(116, 75, 162, 0.3); }
+        100% { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 35px rgba(240, 147, 251, 0.5); }
     }
 
     .gr-gallery img {
         max-width: 120px;
         max-height: 120px;
-        border-radius: 12px;
-        transition: transform 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .gr-gallery img:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3),
+                    0 0 20px rgba(255, 107, 107, 0.6);
     }
 
     /* Text Boxes */
     .gr-textbox {
-        border-radius: 20px;
-        border: 1px solid rgba(0, 166, 81, 0.2);
-        padding: 20px;
+        border-radius: 25px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        padding: 25px;
         font-size: 18px;
-        background: rgba(248, 250, 252, 0.6);
-        backdrop-filter: blur(20px);
-        color: #333;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-        transition: all 0.4s ease;
-        animation: fadeInUp 0.6s ease-out;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(25px);
+        color: #fff;
+        font-weight: 500;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                    0 0 20px rgba(79, 172, 254, 0.3);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation: fadeInUp 0.8s ease-out;
     }
 
     .gr-textbox:focus-within {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-        border-color: rgba(0, 146, 70, 0.4);
-        background: rgba(248, 250, 252, 0.8);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3),
+                    0 0 40px rgba(255, 107, 107, 0.6);
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.15);
     }
 
     .gr-textbox textarea {
@@ -171,13 +231,23 @@ with gr.Blocks(css="""
     }
 
     .input-column, .results-column {
-        background: rgba(248, 250, 252, 0.7);
-        backdrop-filter: blur(25px);
-        border-radius: 25px;
-        padding: 30px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(30px);
+        border-radius: 30px;
+        padding: 35px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                    0 0 30px rgba(102, 126, 234, 0.3);
         min-height: 500px;
-        border: 1px solid rgba(0, 166, 81, 0.15);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+        animation: containerPulse 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes containerPulse {
+        0% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 30px rgba(102, 126, 234, 0.3); }
+        100% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2), 0 0 50px rgba(245, 87, 108, 0.4); }
     }
 
     .input-column {
@@ -193,22 +263,44 @@ with gr.Blocks(css="""
 
     /* Image Component */
     .gr-image {
-        max-width: 280px;
-        max-height: 220px;
-        margin: 0 auto 20px auto;
-        border-radius: 20px;
-        border: 1px solid rgba(0, 166, 81, 0.2);
-        background: rgba(248, 250, 252, 0.6);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-        padding: 12px;
-        transition: all 0.3s ease;
+        max-width: 300px;
+        max-height: 240px;
+        margin: 0 auto 25px auto;
+        border-radius: 25px;
+        border: 3px solid rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                    0 0 25px rgba(102, 126, 234, 0.4);
+        padding: 15px;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gr-image::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+        animation: imageShine 3s ease-in-out infinite;
+    }
+
+    @keyframes imageShine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
     }
 
     .gr-image:hover {
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-        transform: translateY(-3px);
-        background: rgba(248, 250, 252, 0.8);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3),
+                    0 0 40px rgba(245, 87, 108, 0.6);
+        transform: translateY(-8px) scale(1.05);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.6);
     }
 
     .gr-image > div {
@@ -218,12 +310,18 @@ with gr.Blocks(css="""
 
     /* Typography */
     h3 {
-        color: #0B6623;
-        font-weight: bold;
-        margin-bottom: 15px;
-        margin-top: 10px;
+        background: linear-gradient(135deg, #ff6b6b, #4facfe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        margin-bottom: 20px;
+        margin-top: 15px;
         text-align: center;
-        font-size: 20px;
+        font-size: 24px;
+        text-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
 
     .gr-markdown {
