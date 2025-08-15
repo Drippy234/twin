@@ -41,20 +41,18 @@ python app.py
 Screenshots (Add at least 3)
 ## Screenshots (Add at least 3)
 
-![)
+![https://github.com/Drippy234/twin/blob/main/ss3%2Cjpg.png)
 *Example showing celebrity lookalike result.*
 
-![Cartoon Lookalike](https://your-link-to-cartoon-image.png)
+![https://github.com/Drippy234/twin/blob/main/SS1.JPG.png)
 *Example showing cartoon lookalike result.*
 
-![Gradio Interface](https://your-link-to-interface-image.png)
+![Gradio Interface](https://github.com/Drippy234/twin/blob/main/ss4.jpg.png)
 *Gradio app interface for uploading photos and selecting mode.*
 
 ## Diagrams
 
-![Workflow](https://your-link-to-workflow-diagram.png)
-*Shows the workflow from image input to result output.*
-
+n/a
 ## For Hardware (N/A for this project)
 
 ### Schematic & Circuit
@@ -64,7 +62,7 @@ n/a
 ## Project Demo
 
 ### Video
-[Watch the demo here]()
+[Watch the demo here](https://github.com/Drippy234/twin/blob/main/working.mp4)
 *Shows Twin Finder in action with both celebrity and cartoon modes.*
 
 ### Additional Demos
