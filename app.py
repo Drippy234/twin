@@ -335,39 +335,59 @@ with gr.Blocks(css="""
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <style>
-        /* Force white background and modern fonts - UPDATED */
+        /* Cloudy animated background + modern fonts */
         html, body {
-            background: #ffffff !important;
+            background: url('file=assets/clouds.gif') center center / cover no-repeat fixed !important;
             font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
         }
 
-        /* Enhanced glass containers for white background */
+        /* Soft overlay for readability */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at top, rgba(255,255,255,0.25), rgba(255,255,255,0.1)),
+                        linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Raise app above overlay and add glossy look */
         .gradio-container {
-            background: rgba(248, 250, 252, 0.9) !important;
-            backdrop-filter: blur(20px) !important;
-            border: 1px solid rgba(0, 166, 81, 0.2) !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+            position: relative !important;
+            z-index: 1 !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(18px) !important;
+            -webkit-backdrop-filter: blur(18px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.25) !important;
+            border-radius: 28px !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
         }
 
-        /* Force all containers to have visible glass effect */
-        .input-column, .results-column {
-            background: rgba(248, 250, 252, 0.8) !important;
-            backdrop-filter: blur(25px) !important;
-            border: 2px solid rgba(0, 166, 81, 0.2) !important;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .logo-container {
-            background: rgba(248, 250, 252, 0.9) !important;
-            backdrop-filter: blur(25px) !important;
-            border: 2px solid rgba(0, 166, 81, 0.3) !important;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+        /* Glass cards with rounded edges */
+        .input-column, .results-column, .logo-container {
+            background: rgba(255, 255, 255, 0.12) !important;
+            backdrop-filter: blur(26px) !important;
+            -webkit-backdrop-filter: blur(26px) !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: 30px !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
         }
     </style>
     """)
-
-
+    gr.HTML("""
+    <div class="clouds-layer"></div>
+    <style>
+        .clouds-layer {
+            position: fixed;
+            inset: 0;
+            background: url('file=assets/clouds.gif') center center / cover no-repeat;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+    </style>
+    """)
 
     # Sophisticated Logo Design
     gr.HTML("""
